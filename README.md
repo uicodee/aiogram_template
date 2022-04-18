@@ -1,4 +1,5 @@
 # Aiogram bot template
+This is a simple aiogram bot template using PostgreSQL as database
 ```
 ⚠️ Make sure you have a Postgresql database installed
 ```
