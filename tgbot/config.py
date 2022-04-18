@@ -33,7 +33,6 @@ def cast_bool(value: str) -> bool:
 def load_config(path: str):
     config = configparser.ConfigParser()
     config.read(path)
-    print(config.read(path))
     tg_bot = config["tg_bot"]
 
     return Config(
