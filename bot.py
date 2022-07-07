@@ -8,11 +8,9 @@ from sqlalchemy.ext.asyncio import create_async_engine, AsyncSession
 from sqlalchemy.orm import sessionmaker
 
 from tgbot.config import load_config
-from tgbot.filters.role import RoleFilter, AdminFilter
-from tgbot.handlers.admin import register_admin
-from tgbot.handlers.user import register_user
-from tgbot.middlewares.db import DbSessionMiddleware
-from tgbot.middlewares.role import RoleMiddleware
+from tgbot.handlers.commands import register_commands
+from tgbot.handlers.query_handlers import register_query_handlers
+from tgbot.middlewares import register_middlewares
 from tgbot.misc.req_func import make_connection_string
 
 logger = logging.getLogger(__name__)
@@ -24,7 +22,7 @@ async def main():
         format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
     )
     logger.error("Starting bot")
-    config = load_config("bot.ini")
+    config = load_config("bot.ini.example")
     engine = create_async_engine(
         make_connection_string(config.db), future=True, echo=False
     )
@@ -37,13 +35,10 @@ async def main():
 
     bot = Bot(token=config.tg_bot.token)
     dp = Dispatcher(bot, storage=storage)
-    dp.middleware.setup(DbSessionMiddleware(session_fabric))
-    dp.middleware.setup(RoleMiddleware(config.tg_bot.admin_id))
-    dp.filters_factory.bind(RoleFilter)
-    dp.filters_factory.bind(AdminFilter)
 
-    register_admin(dp)
-    register_user(dp)
+    register_middlewares(dp, session_fabric)
+    register_commands(dp)
+    register_query_handlers(dp)
 
     # start
     try:
