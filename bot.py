@@ -22,7 +22,7 @@ async def main():
         format="%(asctime)s - %(levelname)s - %(name)s - %(message)s",
     )
     logger.error("Starting bot")
-    config = load_config("bot.ini.example")
+    config = load_config("bot.ini")
     engine = create_async_engine(
         make_connection_string(config.db), future=True, echo=False
     )

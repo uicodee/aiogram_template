@@ -12,7 +12,7 @@ from tgbot.config import Config, load_config
 from tgbot.misc.req_func import make_connection_string
 
 config = context.config
-bot_config: Config = load_config('bot.ini.example')
+bot_config: Config = load_config('bot.ini')
 config.set_main_option(
     "sqlalchemy.url", make_connection_string(bot_config.db, async_fallback=True)
 )
