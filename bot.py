@@ -9,7 +9,6 @@ from sqlalchemy.orm import sessionmaker
 
 from tgbot.config import load_config
 from tgbot.handlers.commands import register_commands
-from tgbot.handlers.query_handlers import register_query_handlers
 from tgbot.middlewares import register_middlewares
 from tgbot.misc.req_func import make_connection_string
 
@@ -38,9 +37,7 @@ async def main():
 
     register_middlewares(dp, session_fabric)
     register_commands(dp)
-    register_query_handlers(dp)
 
-    # start
     try:
         await dp.start_polling()
     finally:
