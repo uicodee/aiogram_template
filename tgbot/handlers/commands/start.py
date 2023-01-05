@@ -1,7 +1,11 @@
 from aiogram import types
-from tgbot.service.repo.repository import SQLAlchemyRepos
+
+from tgbot.db.dao.holder import HolderDao
 
 
-async def cmd_start(message: types.Message, repo: SQLAlchemyRepos) -> None:
+async def cmd_start(
+        message: types.Message,
+        dao: HolderDao
+) -> None:
     await message.answer(text='Salom')
 

@@ -1,8 +1,8 @@
-from .base import Base, BaseModel
+from .base import Base
 from .user import User
+
 
 __all__ = (
     "Base",
-    "BaseModel",
     "User"
 )
