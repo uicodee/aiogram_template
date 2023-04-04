@@ -4,12 +4,11 @@ version = "0.1.0"
 description = ""
 authors = ["uicodee <uicodee@gmail.com>"]
 readme = "README.md"
-packages = [{include = "aiogram_template"}]
 
 [tool.poetry.dependencies]
 python = "^3.11"
 aiogram = "^2.25.1"
-sqlalchemy = "^2.0.7"
+sqlalchemy = "^2.0.8"
 asyncpg = "^0.27.0"
 
 

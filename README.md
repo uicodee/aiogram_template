@@ -6,7 +6,7 @@ This is a simple aiogram bot template using PostgreSQL as database
 1. Rename `bot.ini.example` to `bot.ini` and fill fields
 2. Install requirements using: 
 ```
-pip install -r requirements.txt
+poetry install
 ```
 3. Create database in psql or pgAdmin
 ```
