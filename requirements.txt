@@ -1,5 +1,0 @@
-aiogram~=2.19
-aioredis
-SQLAlchemy~=1.4.32
-alembic~=1.7.7
-asyncpg

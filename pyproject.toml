@@ -1,0 +1,17 @@
+[tool.poetry]
+name = "aiogram-template"
+version = "0.1.0"
+description = ""
+authors = ["uicodee <uicodee@gmail.com>"]
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.11"
+aiogram = "^2.25.1"
+sqlalchemy = "^2.0.8"
+asyncpg = "^0.27.0"
+
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

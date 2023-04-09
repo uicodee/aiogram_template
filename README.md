@@ -3,12 +3,15 @@ This is a simple aiogram bot template using PostgreSQL as database
 ```
 ⚠️ Make sure you have a Postgresql database installed
 ```
-1. Rename `bot.ini.example` to `bot.ini`
+1. Rename `bot.ini.example` to `bot.ini` and fill fields
 2. Install requirements using: 
 ```
-pip install -r requirements.txt
+poetry install
 ```
-3. Create database in psql
+3. Create database in psql or pgAdmin
+```
+CREATE DATABASE somedb;
+```
 4. Make migrations using Alembic
 ```
 alembic revision --autogenerate -m "init"
@@ -16,6 +19,3 @@ alembic revision --autogenerate -m "init"
 ```
 alembic upgrade head
 ```
-5. To add new language - add language key in ```tgbot/data/data.py```
-6. Add your logic to own bot
-

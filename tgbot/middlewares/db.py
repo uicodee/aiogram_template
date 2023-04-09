@@ -1,7 +1,7 @@
 from aiogram.dispatcher.middlewares import LifetimeControllerMiddleware
 from sqlalchemy.orm import sessionmaker
 
-from tgbot.service.repo.repository import SQLAlchemyRepos
+from tgbot.db.dao.holder import HolderDao
 
 
 class DbSessionMiddleware(LifetimeControllerMiddleware):
@@ -13,13 +13,11 @@ class DbSessionMiddleware(LifetimeControllerMiddleware):
 
     async def pre_process(self, obj, data, *args):
         session = self.session_pool()
-        data['session'] = session
-        repo = SQLAlchemyRepos(session)
-        data['repo'] = repo
+        dao: HolderDao = HolderDao(session=session)
+        data['dao'] = dao
 
     async def post_process(self, obj, data, *args):
         session = data.get("session")
         if session:
             await session.close()
-            del data["session"]
-            del data["repo"]
+            del data["dao"]
